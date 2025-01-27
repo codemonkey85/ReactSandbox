@@ -12,6 +12,13 @@ on:
       - "**/*.gitattributes"
       - "**/*.yml"
   pull_request:
+    paths-ignore:
+      - "**.md"
+      - "**.ps1"
+      - ".editorconfig"
+      - "**/*.gitignore"
+      - "**/*.gitattributes"
+      - "**/*.yml"
     branches: [dev, main]
 
 permissions:

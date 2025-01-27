@@ -3,7 +3,7 @@ name: Build and Deploy
 on:
   workflow_dispatch:
   push:
-    branches: [main]
+    branches: [ main ]
     paths-ignore:
       - "**.md"
       - "**.ps1"
@@ -24,7 +24,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [23.x]
+        node-version: [ 23.x ]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:

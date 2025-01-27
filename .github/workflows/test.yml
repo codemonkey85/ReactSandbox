@@ -3,7 +3,7 @@ name: Build and Test
 on:
   workflow_dispatch:
   push:
-    branches: [dev]
+    branches: [ dev ]
     paths-ignore:
       - "**.md"
       - "**.ps1"
@@ -19,7 +19,7 @@ on:
       - "**/*.gitignore"
       - "**/*.gitattributes"
       - "**/*.yml"
-    branches: [dev, main]
+    branches: [ dev, main ]
 
 permissions:
   contents: write
@@ -33,7 +33,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [23.x]
+        node-version: [ 23.x ]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:

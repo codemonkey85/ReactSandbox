@@ -27,7 +27,8 @@ permissions:
   id-token: write
 
 jobs:
-  deploy:
+  test:
+    name: Build and Test
     runs-on: ubuntu-latest
 
     strategy:

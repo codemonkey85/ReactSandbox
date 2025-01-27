@@ -3,7 +3,7 @@ name: Build and Deploy
 on:
   workflow_dispatch:
   push:
-    branches: [main]
+    branches: [dev]
     paths-ignore:
       - "**.md"
       - "**.ps1"
@@ -11,6 +11,8 @@ on:
       - "**/*.gitignore"
       - "**/*.gitattributes"
       - "**/*.yml"
+  pull_request:
+    branches: [dev, main]
 
 permissions:
   contents: write
@@ -40,9 +42,3 @@ jobs:
           npm ci
           npm run build --if-present
           npm test
-
-      - name: Deploy to gh-pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist

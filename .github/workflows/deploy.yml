@@ -39,15 +39,13 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache-dependency-path: react-sandbox/package-lock.json
           cache: "npm"
-      - run: cd react-sandbox
-      - run: npm i
-      - run: npm ci
-      - run: npm run build --if-present
-      - run: npm test
+      - run: |
+          npm ci
+          npm run build --if-present
+          npm test
 
-      - name: Deploy with gh-pages
-        run: |
-          git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
-          npm run deploy -- -u "github-actions-bot <support+actions@github.com>"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Deploy to gh-pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+          publish_dir: ./dist
